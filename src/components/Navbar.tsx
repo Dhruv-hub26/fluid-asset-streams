@@ -9,6 +9,13 @@ export default function Navbar() {
     { label: 'Governance', hasDropdown: true },
   ]
 
+  const handleScroll = (label: string) => {
+    const target = document.getElementById(label.toLowerCase())
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }
+
   return (
     <nav className="flex items-center justify-between py-6 px-6 md:px-10 w-full relative z-10">
       <div className="flex-1 hidden md:block" />
@@ -17,6 +24,7 @@ export default function Navbar() {
         {navItems.map((item, index) => (
           <li 
             key={index} 
+            onClick={() => handleScroll(item.label)}
             className="cursor-pointer hover:opacity-70 transition-opacity flex items-center gap-1 group"
           >
             {item.label}
